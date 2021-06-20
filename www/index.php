@@ -4,7 +4,7 @@
 	<body> 
 		<form action="index.php" method="post">
 		<label> Insira o CEP: </label>
-		<input type="text" name="cep">
+		<input type="text" minlength="8" maxlength="8" name="cep">
 		<input type="submit" value="Enviar">
 	</body>
 </html>
