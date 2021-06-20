@@ -11,26 +11,22 @@
 
 <?php
 
+include("Address-class.php");
+
+$address = new Address();
+
+
 if(!empty($_POST['cep'])){
 	
 	$cep = $_POST['cep'];
 
-	$address = (get_address($cep));
+	$data = $address->get_address($cep);
 
 	echo "<br><br>CEP Informado: $cep<br>";
-	echo "Rua: $address->logradouro<br>";
-	echo "Bairro: $address->bairro<br>";
-	echo "Estado: $address->uf<br>";
+	echo "Rua: $data->logradouro<br>";
+	echo "Bairro: $data->bairro<br>";
+	echo "Estado: $data->uf<br>";
 }
 
-function get_address($cep){
-	
-	
-	$cep = preg_replace("/[^0-9]/", "", $cep);
-	$url = "http://viacep.com.br/ws/$cep/xml/";
-
-	$xml = simplexml_load_file($url);
-	return $xml;
-}
 
 ?>
